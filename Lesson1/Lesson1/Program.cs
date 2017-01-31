@@ -10,6 +10,21 @@ namespace Lesson1
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Enter first number:");
+            int numberOne = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter second number:");
+            int numberTwo = Convert.ToInt32(Console.ReadLine());
+
+            if (numberOne % numberTwo == 0)
+            {
+                Console.WriteLine("The second number is divider of first");
+            }
+            else
+            {
+                Console.WriteLine("The second number is NOT divider of first");
+            }
+
+            Console.ReadLine();
         }
     }
 }

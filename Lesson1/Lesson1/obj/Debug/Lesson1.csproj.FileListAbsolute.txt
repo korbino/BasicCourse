@@ -1,1 +1,7 @@
 D:\_my_backup\Drop_Box\Dropbox\Навчання\C_sharp\Basic Course\Lesson1\Lesson1\bin\Debug\Lesson1.exe.config
+D:\_my_backup\Drop_Box\Dropbox\Навчання\C_sharp\CSharpBasicCourse\Lesson1\Lesson1\bin\Debug\Lesson1.exe.config
+D:\_my_backup\Drop_Box\Dropbox\Навчання\C_sharp\CSharpBasicCourse\Lesson1\Lesson1\bin\Debug\Lesson1.exe
+D:\_my_backup\Drop_Box\Dropbox\Навчання\C_sharp\CSharpBasicCourse\Lesson1\Lesson1\bin\Debug\Lesson1.pdb
+D:\_my_backup\Drop_Box\Dropbox\Навчання\C_sharp\CSharpBasicCourse\Lesson1\Lesson1\obj\Debug\Lesson1.csprojResolveAssemblyReference.cache
+D:\_my_backup\Drop_Box\Dropbox\Навчання\C_sharp\CSharpBasicCourse\Lesson1\Lesson1\obj\Debug\Lesson1.exe
+D:\_my_backup\Drop_Box\Dropbox\Навчання\C_sharp\CSharpBasicCourse\Lesson1\Lesson1\obj\Debug\Lesson1.pdb
