@@ -24,15 +24,15 @@ namespace Stack
             while (true)
             {                
                 Console.WriteLine(
-                    "=======================================\n"+
-                    "(1) - to generate new Stack;\n" + 
-                    "(2) - to Pop;\n" +
-                    "(3) - to Push;\n" +
-                    "(4) - to IsEmpty;\n" +
-                    "(5) - to IsFull;\n" +
-                    "(6) - to Peek;\n" +
-                    "(7) - to Print stack;\n" +
-                    "======================================="
+                    "=================================\n"+
+                    "| (1) - to generate new Stack; |\n" +
+                    "| (2) - to Pop;                |\n" +
+                    "| (3) - to Push;               |\n" +
+                    "| (4) - to IsEmpty;            |\n" +
+                    "| (5) - to IsFull;             |\n" +
+                    "| (6) - to Peek;               |\n" +
+                    "| (7) - to Print stack;        |\n" +
+                    "================================="
                     );
 
                 String UserSelection = Console.ReadLine();
@@ -158,6 +158,7 @@ namespace Stack
                 Console.WriteLine("stack[{0}]: {1}", j, stack[j-1]);
                 j--;
             }
+            Console.WriteLine("\n");
         }       
     }
 }
