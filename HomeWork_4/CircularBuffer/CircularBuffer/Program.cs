@@ -179,7 +179,6 @@ namespace CircularBuffer
             }
         }
 
-        //TODO:
         static void PrintBuffer(int[] buffer)
         {
             for (int i = 0; i < buffer.Length; i++)
