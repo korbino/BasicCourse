@@ -9,9 +9,7 @@ namespace CircularBuffer
     class Program
     {        
         static int head, tail, counter;
-        static Random rand = new Random();
-        static bool isBufferNew;
-
+        static Random rand = new Random();        
 
         static void Main(string[] args)
         {
@@ -80,8 +78,7 @@ namespace CircularBuffer
             int[] buffer = new int[10];
             head = 0;
             tail = 0;
-            counter = 0;
-            isBufferNew = true;
+            counter = 0;            
             return buffer;
         }
        
