@@ -9,7 +9,7 @@ namespace BubleAndInsertionSort
     class Program
     {
         static Random rand = new Random();
-        
+        static bool isArraySorted;
 
         static void Main(string[] args)
         {
@@ -37,7 +37,7 @@ namespace BubleAndInsertionSort
             for (int i = 0; i < array.Length; i++)
             {
                 array[i] = rand.Next(-100, 100);
-            }
+            }                   
             return array;
         }
 
@@ -55,11 +55,20 @@ namespace BubleAndInsertionSort
             for (int i = array.Length; i >= 0; i--)
             {                
                 for (int j = 0; j < i - 1; j++)
-                    if (array[j] > array[j + 1])
+                    if ((array[j] > array[j + 1]) && !isArraySorted)
                     {
                         array = SwapNumbersInArray(array, j, j + 1);
+                        isArraySorted = false;
+                    }
+                    else
+                    {
+                        isArraySorted = true;
                     }
 
+                if (isArraySorted)
+                {
+                    break;
+                }
             }
 
              return array;
