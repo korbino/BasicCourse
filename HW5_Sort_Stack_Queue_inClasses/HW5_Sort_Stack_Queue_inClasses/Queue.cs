@@ -12,12 +12,12 @@ namespace HW5_Sort_Stack_Queue_inClasses
         private Random rand = new Random();
         int[] buffer;
 
-        public Queue(int[] array, int head, int tail, int counter)
+        public Queue(int[] array)
         {
             buffer = array;
-            this.head = head;
-            this.tail = tail;
-            this.counter = counter;
+            head = 0;
+            tail = 0;
+            counter = 0;
         }
 
         public void Enqueue()

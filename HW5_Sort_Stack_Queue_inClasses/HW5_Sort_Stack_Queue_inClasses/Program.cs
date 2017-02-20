@@ -27,7 +27,7 @@ namespace HW5_Sort_Stack_Queue_inClasses
             StackMenu(stack);
 
             Console.WriteLine("Wellcome to Queue Menu!");
-            Queue queue = new Queue(InitBuffer(), 0, 0, 0);
+            Queue queue = new Queue(InitBuffer());
             QueueMenu(queue);
 
 
@@ -141,7 +141,7 @@ namespace HW5_Sort_Stack_Queue_inClasses
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        queue = new Queue(InitBuffer(), 0, 0, 0);
+                        queue = new Queue(InitBuffer());
                         break;
                     case "2":
                         queue.Enqueue();
