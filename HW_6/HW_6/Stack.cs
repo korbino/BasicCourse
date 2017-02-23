@@ -36,7 +36,8 @@ namespace HW_6
         {
             if (top < stack.Length)
             {
-                stack[top] = rand.Next(-100, 100);
+                Console.Write("\nEnter valid int number: ");
+                stack[top] = ValidateInputNumberForIntValue(Console.ReadLine());
                 Console.WriteLine("Push was performed for stack[{0}]: {1}\n\n", top + 1, stack[top]);
                 top++;
             }

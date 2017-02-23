@@ -22,23 +22,24 @@ namespace HW_6
 
         public void Enqueue()
         {
+            Console.Write("\nEnter valid int number: ");
             if (IsEmpty())
             {
-                buffer[tail] = rand.Next(-100, 100);
+                buffer[tail] = ValidateInputNumberForIntValue(Console.ReadLine());
                 Console.WriteLine("Enqueued value to buffer: {0} \n", buffer[tail]);
                 tail++;
                 counter++;
             }
             else if (IsTailAtTheEndOfBuffer() && !IsEmpty() && !IsFull())
             {
-                buffer[tail] = rand.Next(-100, 100);
+                buffer[tail] = ValidateInputNumberForIntValue(Console.ReadLine());
                 Console.WriteLine("Enqueued value to buffer: {0}\n ", buffer[tail]);
                 tail = 0;
                 counter++;
             }
             else if (!IsTailAtTheEndOfBuffer() && !IsEmpty() && !IsFull())
             {
-                buffer[tail] = rand.Next(-100, 100);
+                buffer[tail] = ValidateInputNumberForIntValue(Console.ReadLine());
                 Console.WriteLine("Enqueued value to buffer: {0} \n", buffer[tail]);
                 tail++;
                 counter++;
@@ -48,6 +49,7 @@ namespace HW_6
                 Console.WriteLine("Sorry - the buffer is Full!\nEnque operation can't be performed.\n\n");
             }
         }
+     
 
         public void Dequeue()
         {
