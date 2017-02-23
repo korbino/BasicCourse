@@ -11,7 +11,7 @@ namespace HW_6
         private int top;
         private int[] stack;
         static Random rand = new Random();
-
+        
         public Stack(int[] array)
         {
             stack = array;
