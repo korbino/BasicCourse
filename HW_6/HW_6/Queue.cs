@@ -69,7 +69,7 @@ namespace HW_6
             }
         }
 
-        public bool IsFull()
+       override public bool IsFull()
         {
             if (counter == buffer.Length)
             {
@@ -81,7 +81,7 @@ namespace HW_6
             }
         }
 
-        public bool IsEmpty()
+        override public bool IsEmpty()
         {
             if (counter == 0)
             {

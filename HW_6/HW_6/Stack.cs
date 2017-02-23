@@ -47,7 +47,7 @@ namespace HW_6
             Print();
         }
 
-        public bool IsEmpty()
+       override public bool IsEmpty()
         {
             if (top <= 0)
             {
@@ -60,7 +60,7 @@ namespace HW_6
 
         }
 
-        public bool IsFull()
+        override public bool IsFull()
         {
             if (top >= stack.Length)
             {
