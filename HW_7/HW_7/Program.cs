@@ -15,7 +15,12 @@ namespace HW_7
             bbSorterForDataContainer.Print("Array before sorting:");
             bbSorterForDataContainer.Sort();
             bbSorterForDataContainer.Print("Array after BUBBLE sorting:");
-          
+
+            InsertionSorter<DataContainer> insSorterDataContainer = new InsertionSorter<DataContainer>(InitDataContainerArray());
+            insSorterDataContainer.Print("Array before sorting:");
+            insSorterDataContainer.Sort();
+            insSorterDataContainer.Print("Array after Insertion sorting:");
+
 
             Console.ReadLine();
         }
