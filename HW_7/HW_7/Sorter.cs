@@ -10,7 +10,7 @@ namespace HW_7
     {
         public abstract void Sort();
 
-        public abstract void Print(String message);
+        public abstract void Print();
 
        protected T[] Swap(T[] array, int indexA, int indexB)
        {

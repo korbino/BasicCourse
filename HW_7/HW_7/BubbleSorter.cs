@@ -36,9 +36,8 @@ namespace HW_7
             }
         }
 
-        public override void Print(String message)
+        public override void Print()
         {
-            Console.WriteLine(message);
             PrintArray(array);
             Console.WriteLine();
         }

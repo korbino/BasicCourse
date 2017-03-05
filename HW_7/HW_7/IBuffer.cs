@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace HW_7
 {
-   public interface IPrintable
+    public interface IBuffer<T> : IPrintable
     {
-        void Print();
+        bool IsEmpty();
+        bool IsFull();
+        int Peek();
     }
 }

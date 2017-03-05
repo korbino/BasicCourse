@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace HW_7
 {
-   public interface IPrintable
+    public interface IMyStack<T>
     {
-        void Print();
+        void Push(T IncomingObject);
+        int Pop();
     }
 }

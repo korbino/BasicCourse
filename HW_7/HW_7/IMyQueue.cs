@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace HW_7
 {
-   public interface IPrintable
+    public interface IMyQueue<T>
     {
-        void Print();
+        void Enqueue(T incomingObject);                
+        int Dequeue();
     }
 }
