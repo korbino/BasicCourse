@@ -144,7 +144,7 @@ namespace HW_7
                     case "3":
                         try
                         {
-                            Console.WriteLine("{1}\n\n", myStack.Pop());
+                            Console.WriteLine("{0}\n\n", myStack.Pop());
                         }
                         catch (Exception e)
                         {
@@ -197,8 +197,7 @@ namespace HW_7
                     break;
                 }
             }
-            Console.WriteLine("Good Luck....");
-            Console.ReadLine();
+            Console.WriteLine("Good Luck....");            
         }
 
         static DataContainer[] InitDataContainerArray()
