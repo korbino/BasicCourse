@@ -18,20 +18,26 @@ namespace HW_7
 
         public int CompareTo(Object obj)
         {
-            //TODO: implement validation
-            DataContainer dt = obj as DataContainer;
+            DataContainer dc = obj as DataContainer;
 
-            if (this.IntValue > dt.IntValue)
+            if (dc != null)
             {
-                return 1;
-            }
-            if (this.IntValue < dt.IntValue)
-            {
-                return -1;
+                if (this.IntValue > dc.IntValue)
+                {
+                    return 1;
+                }
+                if (this.IntValue < dc.IntValue)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
             else
             {
-                return 0;
+                throw new NullReferenceException();
             }
         }
 
@@ -41,3 +47,5 @@ namespace HW_7
         }
     }
 }
+
+

@@ -38,9 +38,8 @@ namespace HW_7
             {                
                 Console.Write("Pop for stack[{0}]: ", top);
                 int tmpTop = top;
-                top--;                
-                int debugResult = Convert.ToInt32(Convert.ToString(stack[tmpTop - 1]));
-                return debugResult;
+                top--;                                
+                return Convert.ToInt32(Convert.ToString(stack[tmpTop - 1]));
             }
             else
             { 
