@@ -8,7 +8,16 @@ namespace HW_7
 {
     public interface IMyQueue<T>
     {
-        void Enqueue(T incomingObject);                
+        /// <summary>
+        /// Writing object in to container
+        /// </summary>
+        /// <param name="incomingObject">object</param>
+        void Enqueue(T incomingObject); 
+ 
+        /// <summary>
+        /// Extructing avaliable object
+        /// </summary>
+        /// <returns>object</returns>     
         T Dequeue();
     }
 }

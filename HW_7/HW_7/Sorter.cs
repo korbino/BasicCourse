@@ -12,6 +12,13 @@ namespace HW_7
 
         public abstract void Print();
 
+        /// <summary>
+        /// This method is doing swap process between two objects
+        /// </summary>
+        /// <param name="array">array of objects</param>
+        /// <param name="indexA">index 1</param>
+        /// <param name="indexB">index 2</param>
+        /// <returns>swapped array of objects</returns>
        protected T[] Swap(T[] array, int indexA, int indexB)
        {
            T temp = array[indexA];
@@ -21,6 +28,10 @@ namespace HW_7
            return array;
        }
 
+        /// <summary>
+        /// Printing array of objects to console
+        /// </summary>
+        /// <param name="array"></param>
        protected void PrintArray(T[] array)
        {
            for (int i = 0; i < array.Length; i++)

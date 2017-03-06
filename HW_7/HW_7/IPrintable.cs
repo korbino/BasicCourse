@@ -8,6 +8,9 @@ namespace HW_7
 {
    public interface IPrintable
     {
+       /// <summary>
+       /// Print data to console
+       /// </summary>
         void Print();
     }
 }

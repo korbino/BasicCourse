@@ -29,8 +29,15 @@ namespace HW_7
             throw new NotImplementedException();
         }
 
-        abstract public int Peek();
+       /// <summary>
+       /// Dsiplaying avaliable value, should be overrided
+       /// </summary>
+       /// <returns>object</returns>
+        abstract public T Peek();
 
+       /// <summary>
+       /// Printing to console, should be overrided
+       /// </summary>
         abstract public void Print(); 
        
     }

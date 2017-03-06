@@ -12,6 +12,10 @@ namespace HW_7
         private Random rand = new Random();
         T[] buffer;
 
+        /// <summary>
+        /// This class is simulating Queue logic
+        /// </summary>
+        /// <param name="array">array of objects</param>
         public MyQueue(T[] array)
         {
             buffer = array;
@@ -20,6 +24,10 @@ namespace HW_7
             counter = 0;
         }
 
+        /// <summary>
+        /// Writing to queue new object in case of there is avaliable place
+        /// </summary>
+        /// <param name="incomingObject">new object</param>
         public void Enqueue(T incomingObject)
         {                       
             if (IsEmpty())
@@ -51,6 +59,10 @@ namespace HW_7
             }
         }
       
+        /// <summary>
+        /// Extructing avaliable object from Queue
+        /// </summary>
+        /// <returns>object</returns>
         public T Dequeue()
         {                        
             if (!IsEmpty() && IsHeadAtTheEndOfBuffer())
@@ -76,6 +88,10 @@ namespace HW_7
             }
         }
 
+        /// <summary>
+        /// Check if queue is empty
+        /// </summary>
+        /// <returns>boolean value</returns>
         public override bool IsFull()
         {
             if (counter == buffer.Length)
@@ -88,6 +104,10 @@ namespace HW_7
             }
         }
 
+        /// <summary>
+        /// Check if queue is full
+        /// </summary>
+        /// <returns>boolean value</returns>
         public override bool IsEmpty()
         {
             if (counter == 0)
@@ -100,6 +120,10 @@ namespace HW_7
             }
         }
 
+        /// <summary>
+        /// Check if head placed at the end of Buffer
+        /// </summary>
+        /// <returns>boolean value</returns>
         public bool IsHeadAtTheEndOfBuffer()
         {
             if (head == buffer.Length - 1)
@@ -112,6 +136,10 @@ namespace HW_7
             }
         }
 
+        /// <summary>
+        /// Check if tail placed at the end of queue
+        /// </summary>
+        /// <returns></returns>
         public bool IsTailAtTheEndOfBuffer()
         {
             if (tail == buffer.Length - 1)
@@ -124,6 +152,9 @@ namespace HW_7
             }
         }
 
+        /// <summary>
+        /// Print to console the queue, with head\tail tags
+        /// </summary>
         public override void Print()
         {
             for (int i = 0; i < buffer.Length; i++)
@@ -141,9 +172,13 @@ namespace HW_7
             }
         }
         
-        public override int Peek()
+        /// <summary>
+        /// Show avaliable to Dequeue value
+        /// </summary>
+        /// <returns>object</returns>
+        public override T Peek()
         {
-            return Convert.ToInt32(buffer[head]);
+            return buffer[head];
         }
     }
 }

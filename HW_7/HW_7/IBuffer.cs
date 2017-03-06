@@ -10,6 +10,6 @@ namespace HW_7
     {
         bool IsEmpty();
         bool IsFull();
-        int Peek();
+        T Peek();
     }
 }

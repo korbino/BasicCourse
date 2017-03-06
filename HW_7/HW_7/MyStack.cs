@@ -11,12 +11,20 @@ namespace HW_7
         int top;
         T[] stack;
         Random rand = new Random();
-
+        
+        /// <summary>
+        /// Implementing the Stack
+        /// </summary>
+        /// <param name="array">Recieve array of objects</param>
         public MyStack(T[] array)
         {
             stack = array;
         }
 
+        /// <summary>
+        /// Insert to stack new object, in case there is avaliable place
+        /// </summary>
+        /// <param name="IncomingObject">Object </param>
         public void Push(T IncomingObject)
         {
             if (top < stack.Length)
@@ -32,6 +40,10 @@ namespace HW_7
             Print();
         }
 
+        /// <summary>
+        /// Extract last avalibale value
+        /// </summary>
+        /// <returns>Object T</returns>
         public T Pop()
         {           
             if (top > 0)
@@ -47,13 +59,17 @@ namespace HW_7
             }            
         }
 
-        public override int Peek()
+        /// <summary>
+        /// Display last avaliable value 
+        /// </summary>
+        /// <returns>Object</returns>
+        public override T Peek()
         {
             if (top > 0)
             {
                 
                 Console.WriteLine("The peek value is - stack[{0}]: ", top);
-                return Convert.ToInt32(Convert.ToString(stack[top - 1]));   
+                return stack[top - 1];   
             }
             else
             {
@@ -61,6 +77,10 @@ namespace HW_7
             }            
         }
 
+        /// <summary>
+        /// Check if Stack is empty
+        /// </summary>
+        /// <returns>Boolean</returns>
         override public bool IsEmpty()
         {
             if (top <= 0)
@@ -74,6 +94,10 @@ namespace HW_7
 
         }
 
+        /// <summary>
+        /// Check if stack is Full
+        /// </summary>
+        /// <returns>Boolean</returns>
         override public bool IsFull()
         {
             if (top >= stack.Length)
@@ -87,6 +111,9 @@ namespace HW_7
 
         }        
         
+        /// <summary>
+        /// Print stack to console
+        /// </summary>
         public override void Print()
         {
             Console.WriteLine("The current myStack state:");

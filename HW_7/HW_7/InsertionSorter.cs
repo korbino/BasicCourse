@@ -10,11 +10,18 @@ namespace HW_7
     {
         T[] array;
 
+        /// <summary>
+        /// This calss simulating Insertion soriting logic
+        /// </summary>
+        /// <param name="array">array of objects</param>
         public InsertionSorter(T[] array)
         {
             this.array = array;
         }
 
+        /// <summary>
+        /// Sorting array according to insertion sorter
+        /// </summary>
         public override void Sort()
         {
             for (int i = 0; i < array.Length - 1; i++)
@@ -30,6 +37,9 @@ namespace HW_7
             }
         }
 
+        /// <summary>
+        /// Printing array
+        /// </summary>
         public override void Print()
         {
             PrintArray(array);

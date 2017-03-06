@@ -8,6 +8,9 @@ namespace HW_7
 {
    public interface ISorter<T>  : IPrintable
     {
+       /// <summary>
+       /// Method, where should be implemented sorting logic
+       /// </summary>
         void Sort();
     }
 }

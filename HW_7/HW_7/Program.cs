@@ -33,6 +33,10 @@ namespace HW_7
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Generating menu for the Queue
+        /// </summary>
+        /// <param name="myQueue">Recieving the object with queue(array of objects)</param>
         static void QueueMenu(MyQueue<DataContainer> myQueue)
         {
             bool isExit = false;
@@ -112,6 +116,10 @@ namespace HW_7
             
         }
 
+        /// <summary>
+        /// Generating menu for the Menu
+        /// </summary>
+        /// <param name="myStack">Recieving array of objects</param>
         static void StackMenu(MyStack<DataContainer> myStack)
         {
             bool isExit = false;
@@ -200,6 +208,10 @@ namespace HW_7
             Console.WriteLine("Good Luck....");            
         }
 
+        /// <summary>
+        /// This method is generating array of DataContainer objects with size 10
+        /// </summary>
+        /// <returns>Array of DataContainer objects</returns>
         static DataContainer[] InitDataContainerArray()
         {
             Console.WriteLine("Init DataContainer Array:>>>>>>");
@@ -211,6 +223,10 @@ namespace HW_7
             return array;
         }
 
+        /// <summary>
+        /// This method is generating empty array with Datacontainer type
+        /// </summary>
+        /// <returns>Empty DataContainer array</returns>
         static DataContainer[] InitEmptyDataContainerArray()
         {
             Console.WriteLine("Init empty DataContainer Array: >>>");
@@ -218,6 +234,11 @@ namespace HW_7
             return array;
         }
 
+        /// <summary>
+        /// Generating new DataContainer object
+        /// </summary>
+        /// <param name="number">recieving int value</param>
+        /// <returns>new DataContainer object</returns>
         static DataContainer NewDataContainerObj(int number)
         {
             return new DataContainer(number);

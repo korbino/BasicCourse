@@ -11,11 +11,22 @@ namespace HW_7
 
         public int IntValue { set; get; }
 
+        /// <summary>
+        /// Thsi is data container calss, which is holding one INT field
+        /// </summary>
+        /// <param name="intValue">int value</param>
         public DataContainer(int intValue)
         {
             this.IntValue = intValue;
         }
 
+        /// <summary>
+        /// Comparing two objects (itself)
+        /// </summary>
+        /// <param name="obj">object to compare</param>
+        /// <returns>return 1 in case local object > incoming
+        /// return -1 in case of local object < incoming
+        /// return 0 in case of local object == to incoming</returns>
         public int CompareTo(Object obj)
         {
             DataContainer dc = obj as DataContainer;
