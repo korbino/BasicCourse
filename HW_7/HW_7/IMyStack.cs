@@ -9,6 +9,6 @@ namespace HW_7
     public interface IMyStack<T>
     {
         void Push(T IncomingObject);
-        int Pop();
+        T Pop();
     }
 }

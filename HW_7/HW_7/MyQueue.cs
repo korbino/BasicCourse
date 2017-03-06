@@ -51,36 +51,28 @@ namespace HW_7
             }
         }
       
-        public int Dequeue()
-        {
-            int result = 0;
-            bool isEmpty = false;
+        public T Dequeue()
+        {                        
             if (!IsEmpty() && IsHeadAtTheEndOfBuffer())
             {                
-                result = Convert.ToInt32(buffer[head]);      
+                return buffer[head];      
                 head = 0;
                 counter--;
             }
             else if (!IsEmpty() && !IsHeadAtTheEndOfBuffer())
-            {                
-                result = Convert.ToInt32(Convert.ToString(buffer[head]));
-                head++;
+            {                                                
                 counter--;
+                T obj = buffer[head];
+                head++;
+                return obj;
             }
             else if (IsEmpty())
             {
-                isEmpty = true;                
-            }
-
-            //Make decision: in case of queue is empty - throw exception and catch it in Programm class.
-            //Return int result in opposit case.
-             if (isEmpty)
-            {
-                throw new IndexOutOfRangeException();
+                throw new IndexOutOfRangeException();                
             }
             else
             {
-                return result;
+                return buffer[head];
             }
         }
 

@@ -9,6 +9,6 @@ namespace HW_7
     public interface IMyQueue<T>
     {
         void Enqueue(T incomingObject);                
-        int Dequeue();
+        T Dequeue();
     }
 }

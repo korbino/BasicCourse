@@ -32,14 +32,14 @@ namespace HW_7
             Print();
         }
 
-        public int Pop()
+        public T Pop()
         {           
             if (top > 0)
             {                
                 Console.Write("Pop for stack[{0}]: ", top);
                 int tmpTop = top;
                 top--;                                
-                return Convert.ToInt32(Convert.ToString(stack[tmpTop - 1]));
+                return stack[tmpTop - 1];
             }
             else
             { 
