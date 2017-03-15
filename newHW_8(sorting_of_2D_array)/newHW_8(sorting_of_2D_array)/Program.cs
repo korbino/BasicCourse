@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace newHW_8_sorting_of_2D_array_
 {
     class Program
-    {        
+    {
+        static int[,] current2DArray;
+
         static void Main(string[] args)
         {            
             Menu();                       
@@ -15,14 +17,14 @@ namespace newHW_8_sorting_of_2D_array_
 
         static void Menu()
         {            
-            //objects and fields init:
-            int[,] current2DArray;
+            //objects and fields init:            
             bool uRAlive = true;
             ArrayGenerator arrayGen = new ArrayGenerator();
             current2DArray = arrayGen.Generate2DArray(10, 2);
             ISorter bbSorter = new BubleSorter();
             ISorter insSorter = new InsertionSorter();
             ISorter defSorter = new DefaultSorter();
+            ISorter selSorter = new SelectionSorter();
 
             //Menu:
             while (uRAlive)
@@ -34,8 +36,8 @@ namespace newHW_8_sorting_of_2D_array_
                     "| (3) - Bubble sort: from Max to Min      |\n" +
                     "| (4) - Insertion Sort: from Min to Max   |\n" +
                     "| (5) - Insertion Sort: from Max to Min   |\n" +
-                    "| (6) - <N\\A> Sort: from Min to Max       |\n" +
-                    "| (7) - <N\\A> Sort: from Max to Min       |\n" +
+                    "| (6) - Selection Sort: from Min to Max   |\n" +
+                    "| (7) - Selection Sort: from Max to Min   |\n" +
                     "| (8) - Default Sort: from Min to Max     |\n" +
                     "| (9) - Default Sort: from Max to Min     |\n" +
                     "| (10) - Print current array2D            |\n" +
@@ -63,6 +65,14 @@ namespace newHW_8_sorting_of_2D_array_
                     case "5":
                         Console.WriteLine("**You choosed Insertion sort: from Max to Min. \nPrint it - to check.");
                         current2DArray = insSorter.Sort(current2DArray, false);
+                        break;
+                    case "6":
+                        Console.WriteLine("**You choosed Selection* sort: from Min to Max. \nPrint it - to check.");
+                        current2DArray = selSorter.Sort(current2DArray, true);
+                        break;
+                    case "7":
+                        Console.WriteLine("**You choosed Selection* sort: from Max to Min. \nPrint it - to check.");
+                        current2DArray = selSorter.Sort(current2DArray, false);
                         break;
                     case "8":
                         Console.WriteLine("**You choosed Default sort: from Min to Max. \nPrint it - to check.");
