@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//TODO: Learn 10 shortcuts from studia...
+ 
 namespace newHW_8_sorting_of_2D_array_
 {
     class Program
@@ -12,10 +14,10 @@ namespace newHW_8_sorting_of_2D_array_
 
         static void Main(string[] args)
         {            
-            Menu();                       
+            ShowMenu();                       
         }
-
-        static void Menu()
+        //TODO:showmenu should recieve param (array, objects of sorters(list "ISorter" type))
+        static void ShowMenu()
         {            
             //objects and fields init:            
             bool uRAlive = true;
@@ -27,6 +29,7 @@ namespace newHW_8_sorting_of_2D_array_
             ISorter selSorter = new SelectionSorter();
 
             //Menu:
+            //TODO: replace while "true"
             while (uRAlive)
             {
                 Console.WriteLine(
@@ -40,50 +43,50 @@ namespace newHW_8_sorting_of_2D_array_
                     "| (7) - Selection Sort: from Max to Min   |\n" +
                     "| (8) - Default Sort: from Min to Max     |\n" +
                     "| (9) - Default Sort: from Max to Min     |\n" +
-                    "| (10) - Print current array2D            |\n" +
+                    "| (10) - PrintCurrent2DArray current array2D            |\n" +
                     "==========================================="
                     );
 
                 switch (Console.ReadLine())
-                {
+                {//TODO: spelling mistakes, rename objects to m
                     case "1":
                         current2DArray = arrayGen.Generate2DArray(10, 2);
-                        Console.WriteLine("**New 2D array was generated. \n**To check it - please choose Print item in below Menu.");
+                        Console.WriteLine("**New 2D array was generated. \n**To check it - please choose PrintCurrent2DArray item in below ShowMenu.");
                         break;
                     case "2":
-                        Console.WriteLine("**You choosed Bubble sort: from Min to Max. \n**Print it - to check.");
+                        Console.WriteLine("**You choosed Bubble sort: from Min to Max. \n**PrintCurrent2DArray it - to check.");
                         current2DArray = bbSorter.Sort(current2DArray, true);
                         break;
                     case "3":
-                        Console.WriteLine("**You choosed Bubble sort: from Max to Min. \n**Print it - to check.");
+                        Console.WriteLine("**You choosed Bubble sort: from Max to Min. \n**PrintCurrent2DArray it - to check.");
                         current2DArray = bbSorter.Sort(current2DArray, false);
                         break;
                     case "4":
-                        Console.WriteLine("**You choosed Insertion sort: from Min to Max. \nPrint it - to check.");
+                        Console.WriteLine("**You choosed Insertion sort: from Min to Max. \nPrintCurrent2DArray it - to check.");
                         current2DArray = insSorter.Sort(current2DArray, true);
                         break;
                     case "5":
-                        Console.WriteLine("**You choosed Insertion sort: from Max to Min. \nPrint it - to check.");
+                        Console.WriteLine("**You choosed Insertion sort: from Max to Min. \nPrintCurrent2DArray it - to check.");
                         current2DArray = insSorter.Sort(current2DArray, false);
                         break;
                     case "6":
-                        Console.WriteLine("**You choosed Selection* sort: from Min to Max. \nPrint it - to check.");
+                        Console.WriteLine("**You choosed Selection* sort: from Min to Max. \nPrintCurrent2DArray it - to check.");
                         current2DArray = selSorter.Sort(current2DArray, true);
                         break;
                     case "7":
-                        Console.WriteLine("**You choosed Selection* sort: from Max to Min. \nPrint it - to check.");
+                        Console.WriteLine("**You choosed Selection* sort: from Max to Min. \nPrintCurrent2DArray it - to check.");
                         current2DArray = selSorter.Sort(current2DArray, false);
                         break;
                     case "8":
-                        Console.WriteLine("**You choosed Default sort: from Min to Max. \nPrint it - to check.");
+                        Console.WriteLine("**You choosed Default sort: from Min to Max. \nPrintCurrent2DArray it - to check.");
                         current2DArray = defSorter.Sort(current2DArray, true);
                         break;
                     case "9":
-                        Console.WriteLine("**You choosed Default sort: from Max to Min. \nPrint it - to check");
+                        Console.WriteLine("**You choosed Default sort: from Max to Min. \nPrintCurrent2DArray it - to check");
                         current2DArray = defSorter.Sort(current2DArray, false);
                         break;
                     case "10":
-                        Print();
+                        PrintCurrent2DArray();
                         break;
                     default:
                         Console.WriteLine("You entered not correct value. \n Please try again.");
@@ -91,8 +94,8 @@ namespace newHW_8_sorting_of_2D_array_
                 }
             }
         }
-
-        static void Print()
+        //TODO: print like 2D
+        static void PrintCurrent2DArray()
         {
             Console.WriteLine("Current state of 2D array:");
             foreach (int val in current2DArray)

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace newHW_8_sorting_of_2D_array_
 {
-    class SorterCommon
+    //
+    class BaseSorter
     {
         //swapping between 2 numbers in array
         protected int[] Swap(int[] array, int indexA, int indexB)

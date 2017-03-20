@@ -10,6 +10,7 @@ namespace newHW_8_sorting_of_2D_array_
     {       
         Random rand = new Random();
         
+        //TODO: make method to Static
         public int[,] Generate2DArray(int dim_1, int dim_2)
         {
             int[,] array = new int [dim_1,dim_2];

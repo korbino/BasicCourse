@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace newHW_8_sorting_of_2D_array_
 {
-    class SelectionSorter : SorterCommon, ISorter
+    class SelectionSorter : BaseSorter, ISorter
     {
         int[] array;
         public int[,] Sort(int[,] array2D, bool isSortingFromMinToMax)

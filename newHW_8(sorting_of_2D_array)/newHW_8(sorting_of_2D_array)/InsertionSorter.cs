@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace newHW_8_sorting_of_2D_array_
 {
-    class InsertionSorter : SorterCommon, ISorter
+    class InsertionSorter : BaseSorter, ISorter
     {
         int[] array;
 

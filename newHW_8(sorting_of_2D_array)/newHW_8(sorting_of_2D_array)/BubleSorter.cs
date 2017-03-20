@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+//using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace newHW_8_sorting_of_2D_array_
 {
-    class BubleSorter : SorterCommon, ISorter
+    //TODO: overide toString for to recieve name of sorter
+    //TODO: define private vars
+    class BubleSorter : BaseSorter, ISorter
     {        
         int[] array;
         bool isArraySorted;      

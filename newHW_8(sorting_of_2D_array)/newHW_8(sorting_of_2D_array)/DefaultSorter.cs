@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace newHW_8_sorting_of_2D_array_
 {
-    class DefaultSorter : SorterCommon, ISorter
+    class DefaultSorter : BaseSorter, ISorter
     {
         int[] array;
 
+        //TODO: remove converatation logic from sort methods..
+        //e.g. "sorter util"
         public int[,] Sort(int[,] array2D, bool isSortingFromMinToMax)
         {
             array = Convert2DArrayTo1D(array2D);
