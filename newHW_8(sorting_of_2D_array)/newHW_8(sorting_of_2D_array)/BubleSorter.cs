@@ -5,17 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace newHW_8_sorting_of_2D_array_
-{
-    //TODO: overide toString for to recieve name of sorter
-    //TODO: define private vars
+{     
     class BubleSorter : BaseSorter, ISorter
-    {        
-        int[] array;
-        bool isArraySorted;      
+    {                
+        private bool isArraySorted;      
 
-        public int[,] Sort(int[,] array2D, bool isSortingFromMinToMax)
-        {
-            this.array = Convert2DArrayTo1D(array2D);
+        public int[] Sort(int[] array, bool isSortingFromMinToMax)
+        {            
 
             for (int i = array.Length; i >= 0; i--)
             {
@@ -25,7 +21,7 @@ namespace newHW_8_sorting_of_2D_array_
                         array = Swap(array, j, j + 1);
                         isArraySorted = false;
                     }
-                //inverse sorting
+                //inverse sorting from max to min.
                 else if ((array[j] < array[j + 1]) && !isSortingFromMinToMax)
                     {
                         array = Swap(array, j, j + 1);
@@ -38,7 +34,11 @@ namespace newHW_8_sorting_of_2D_array_
                 isArraySorted = true;
             }
 
-            return Convert1DArraTo2D(array, array2D.GetLength(0), array2D.GetLength(1));
-        }       
+            return array;
+        }
+        public override string ToString()
+        {
+            return "BubleSorter";
+        }
     }
 }

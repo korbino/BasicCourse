@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 namespace newHW_8_sorting_of_2D_array_
 {
     class SelectionSorter : BaseSorter, ISorter
-    {
-        int[] array;
-        public int[,] Sort(int[,] array2D, bool isSortingFromMinToMax)
-        {
-            array = Convert2DArrayTo1D(array2D);
+    {                
+        public int[] Sort(int[] array, bool isSortingFromMinToMax)
+        {            
             for (int i = 0; i < array.Length - 1; i++)
             {                
                 int min = i;
@@ -21,6 +19,7 @@ namespace newHW_8_sorting_of_2D_array_
                     {
                         min = j;
                     }
+                        //inverse logic
                     else if ((array[j] > array[min]) && !isSortingFromMinToMax)
                     {
                         min = j;
@@ -30,7 +29,12 @@ namespace newHW_8_sorting_of_2D_array_
                 array[i] = array[min];
                 array[min] = dummy;
             }
-            return Convert1DArraTo2D(array, array2D.GetLength(0), array2D.GetLength(1));
+            return array;
+        }
+
+        public override string ToString()
+        {
+            return "SelectionSorter";
         }
     }
 }

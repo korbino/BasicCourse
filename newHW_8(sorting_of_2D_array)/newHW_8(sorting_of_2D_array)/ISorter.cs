@@ -8,6 +8,6 @@ namespace newHW_8_sorting_of_2D_array_
 {
     interface ISorter
     {
-        int[,] Sort(int[,] array2D, bool isSortingFromMinToMax);        
+        int[] Sort(int[] array, bool isSortingFromMinToMax);        
     }
 }

@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 namespace newHW_8_sorting_of_2D_array_
 {
     class DefaultSorter : BaseSorter, ISorter
-    {
-        int[] array;
-
-        //TODO: remove converatation logic from sort methods..
-        //e.g. "sorter util"
-        public int[,] Sort(int[,] array2D, bool isSortingFromMinToMax)
-        {
-            array = Convert2DArrayTo1D(array2D);
-
+    {                  
+        public int[] Sort(int[] array, bool isSortingFromMinToMax)
+        {            
             if (isSortingFromMinToMax)
             {
                 Array.Sort(array);
             }
+            //inverse logic
             else
                 Array.Reverse(array);
 
-            return Convert1DArraTo2D(array, array2D.GetLength(0), array2D.GetLength(1));
+            return array;
+        }
+
+        public override string ToString()
+        {
+            return "DefaultSorter";
         }
     }
 }
