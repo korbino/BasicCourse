@@ -214,33 +214,41 @@ namespace Sorting
             //run sorting itself. In multithreads, or in single.
             if (isSortWithAllSortersSimultaneously)
             {
+                int counterForOutputs = 0;
+
                 foreach (ISorter sorter in sorterList)
                 {
-                    int[] tmpArray = null;
+                    int[] tmpArray = null;                   
                     Stopwatch sw = new Stopwatch();
 
+                    //init thread
                     Thread sorterThread = new Thread(
                         () =>
                         {
+                            sw.Start();
                             tmpArray = sorter.Sort((int[])current1DArray.Clone(), isAscSorting);
-                        });
+                                                        
+                            while (tmpArray == null)
+                            {
+                                //whait untill array will be sorted.  
+                            }
+                            sw.Stop();
 
-                    sw.Start();
-                    sorterThread.Start();
-                    while (tmpArray == null)
-                    {
-                        //whait untill array will be sorted.  
-                    }
-                    sw.Stop();
-
-                    //lock converting 1d to 2d array and printing to console
-                    lock (locker)
-                    {
-                        Console.WriteLine("Array was sorted with {0}:\nWith elapsed time: {1}\n----------------------", sorter.ToString(), sw.Elapsed);
-                        SortUtil.Print2DArrayToConsole(SortUtil.Convert1DArraTo2D(tmpArray, current2DArray.GetLength(0), current2DArray.GetLength(1)));
-                        Console.WriteLine("\n\n");
-                    }
-                }                
+                            //lock converting 1d to 2d array and printing to console
+                            lock (locker)
+                            {
+                                Console.WriteLine("Array was sorted with {0}:\nWith elapsed time: {1}\n----------------------", sorter.ToString(), sw.Elapsed);
+                                //SortUtil.Print2DArrayToConsole(SortUtil.Convert1DArraTo2D(tmpArray, current2DArray.GetLength(0), current2DArray.GetLength(1)));
+                                Console.WriteLine("\n\n");
+                                counterForOutputs++;
+                            }
+                        });                    
+                    sorterThread.Start();                    
+                }
+                while (counterForOutputs < sorterList.Count)
+                {
+                    //wait untill all results will be printed to screen
+                }
             }
             else
             {
