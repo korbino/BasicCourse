@@ -84,5 +84,58 @@ namespace Sorting
                 Console.Write(Environment.NewLine + Environment.NewLine);
             }
         }
+
+        /// <summary>
+        /// This method goiong to loop, untill you'll enter valid int value
+        /// </summary>
+        /// <param name="value">read value from console</param>
+        /// <param name="min">minimal limit number</param>
+        /// <param name="max">maximal limit number</param>
+        /// <returns>validated int value</returns>
+        public static int ValidateInputNumberForIntValue(String value, int min, int max)
+        {
+            int result;
+            while (true)
+            {
+                if (IsItInteger(value))
+                {
+                    result = Convert.ToInt32(value);
+                    //if (result >= min && result <= max)
+                    if (Enumerable.Range(min, max).Contains(result))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You entered not valid value, please reentere it again:");
+                        value = Console.ReadLine();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("You entered not valid value, please reentere it again:");
+                    value = Console.ReadLine();
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Parsing string for int.
+        /// </summary>
+        /// <param name="value">String</param>
+        /// <returns>In case of string contain only int number - return true and vise versa</returns>
+        public static bool IsItInteger(String value)
+        {
+            int number;
+            if (int.TryParse(value, out number))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
