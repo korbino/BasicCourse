@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Threading;
-using System.Diagnostics;
+
 
 namespace Sorting
-{
+{    
     class Program
     {             
         static void Main(string[] args)
@@ -17,12 +16,29 @@ namespace Sorting
                 new InsertionSorter(),
                 new DefaultSorter(),
                 new SelectionSorter()            
-            };
-
+            };            
             SortMenu sortMenu = new SortMenu(sorterList);
-            sortMenu.ShowMenu();            
-        }
+            
+            //linking event from sorters(publisher) with SortMenu (subscriber)
+            foreach (ISorter sorter in sorterList)
+            {
+                sorter.ArrayWasSorted += sortMenu.OnArrayWasSorted;
+            }
 
-     
+            sortMenu.ShowMenu();            
+        }     
     }
 }
+
+//TODO: validator move to separate class and dll
+//TODO: thread.IsBackground = true;
+//TODO: return object as event args
+//TODO: make all sorters with events
+
+
+
+//TO READ:
+// - лямбда выражения
+// - thread: разница между джойн и стопом,
+// - ивенты внутри потока
+// - разница между thread & task

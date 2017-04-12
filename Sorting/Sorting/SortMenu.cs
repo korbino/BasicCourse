@@ -15,8 +15,10 @@ namespace Sorting
         private int userSelectionMainMenu;
         private bool isAscSorting;
         private String sortingModePrefix;
-        private object locker = new object();
+        private static object locker = new object();
         private List<ISorter> sorterList;
+        private int counterForOutputs = 0;
+        //private int[] tmpArray;        
 
         public SortMenu(List<ISorter> sorterList)
         {
@@ -36,11 +38,12 @@ namespace Sorting
                 Console.Clear();
                 int sorterListMenuItemCounter = 4;
 
+                //TODO: create array of string and print
                 Console.WriteLine(
                     "\t\tChoose your actions:\n" +
                     "(1) - Generate new custom 2D array\n" +
                     "(2) - Print 2D array\n" +
-                    "(3) - Sort simultaneously with all sorters (NOT READY YET)"
+                    "(3) - Sort simultaneously with all sorters and print to console, once it will be sorted"
                     );
 
                 //generating dynamic menu, according to incoming List of sorters
@@ -63,7 +66,11 @@ namespace Sorting
                         MenuDialog_GenerateNew2DArray();
                         break;
                     case 2:
-                        MenuDialog_Print2DArray();
+                        Console.Clear();
+                        Console.WriteLine("Please see below printed 2D array:\n\n");
+                        SortUtil.Print2DArrayToConsole(current2DArray);
+                        Console.WriteLine("To continue, please press any key...");
+                        Console.ReadKey();
                         break;
                     case 3:
                         MenuDialog_SortingMenuHandler(true);
@@ -103,19 +110,11 @@ namespace Sorting
             Console.ReadKey();
         }
 
-        //
-        private void MenuDialog_Print2DArray()
-        {
-            Console.Clear();
-            Console.WriteLine("Please see below printed 2D array:\n\n");
-            SortUtil.Print2DArrayToConsole(current2DArray);
-            Console.WriteLine("To continue, please press any key...");
-            Console.ReadKey();
-        }
+        
 
 
 
-        //
+        //split to few small 
         private void MenuDialog_SortingMenuHandler(bool isSortWithAllSortersSimultaneously)
         {
             //define prefix for sorting mode description
@@ -153,40 +152,27 @@ namespace Sorting
             //run sorting itself. In multithreads, or in single.
             if (isSortWithAllSortersSimultaneously)
             {
-                int counterForOutputs = 0;
+                                
 
                 foreach (ISorter sorter in sorterList)
                 {
-                    int[] tmpArray = null;
-                    Stopwatch sw = new Stopwatch();
+                   
+                    Stopwatch stopWatch = new Stopwatch();
 
                     //init thread
                     Thread sorterThread = new Thread(
                         () =>
                         {
-                            sw.Start();
-                            tmpArray = sorter.Sort((int[])current1DArray.Clone(), isAscSorting);
+                            stopWatch.Start();
+                            sorter.Sort((int[])current1DArray.Clone(), isAscSorting);
 
-                            while (tmpArray == null)
-                            {
-                                //whait untill array will be sorted.  
-                            }
-                            sw.Stop();
-
-                            //lock converting 1d to 2d array and printing to console
-                            lock (locker)
-                            {
-                                Console.WriteLine("Array was sorted with {0}:\nWith elapsed time: {1}\n----------------------", sorter.ToString(), sw.Elapsed);
-                                //SortUtil.Print2DArrayToConsole(SortUtil.Convert1DArraTo2D(tmpArray, current2DArray.GetLength(0), current2DArray.GetLength(1)));
-                                Console.WriteLine("\n\n");
-                                counterForOutputs++;
-                            }
+                            stopWatch.Stop();                            
                         });
                     sorterThread.Start();
-                }
+                }                
+                //wait untill all results will be printed to screen
                 while (counterForOutputs < sorterList.Count)
-                {
-                    //wait untill all results will be printed to screen
+                {                   
                 }
             }
             else
@@ -196,6 +182,17 @@ namespace Sorting
             }
             Console.WriteLine("Array was sorted with <<{0}>>. \nPlease press anykey get back to Main menu....", sortingModePrefix);
             Console.ReadKey();
-        }       
+        }
+       
+        //subscriber method       
+        public void OnArrayWasSorted(ArrayWasSortedEventArgs args)
+        {
+            lock (locker)
+            {
+                Console.WriteLine("\n\nArray was sorted with:<{0}>. \nWith Elapsed time:<{1}>: \n______", args.SorterName, args.stopWatch.Elapsed);
+                SortUtil.Print2DArrayToConsole(SortUtil.Convert1DArraTo2D(args.Array1D, current2DArray.GetLength(0), current2DArray.GetLength(1)));
+                counterForOutputs++;           
+            }           
+        }
     }
 }

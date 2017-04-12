@@ -1,0 +1,32 @@
+create database myDB;
+
+use myDB
+create table array_2d_input (	
+	Column_1 int, 
+	Column_2 int,
+	Column_3 int,
+	Column_4 int,
+	Column_5 int,
+	Column_6 int,
+	Column_7 int,
+	Column_8 int,
+	Column_9 int,	
+	Column_10 int
+);
+
+
+use myDB
+insert into array_2d_input (Column_1, Column_2, Column_3, Column_4, Column_5, Column_6, Column_7, Column_8, Column_9, Column_10) values
+(100,200,300,400,500,600,700,800,900,1000),
+(101,201,301,401,501,601,701,801,901,1010),
+(102,202,302,402,502,602,702,802,902,1020),
+(103,203,303,403,503,603,703,803,903,1030),
+(104,204,304,404,504,604,704,804,904,1040),
+(105,205,305,405,505,605,705,805,905,1050),
+(106,206,306,406,506,606,706,806,906,1060),
+(107,207,307,407,507,607,707,807,907,1070),
+(108,208,308,408,508,608,708,808,908,1080),
+(109,209,309,409,509,609,709,809,909,1090)
+;
+
+--drop table array_2d_input;

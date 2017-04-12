@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Sorting
 {
-   public interface ISorter
-    {
+   //delegate:  
+   public delegate void SortedEventHandler(ArrayWasSortedEventArgs args);   
+   
+    public interface ISorter
+    {           
         int[] Sort(int[] array, bool isSortingFromMinToMax);
+        event SortedEventHandler ArrayWasSorted;
     }
 }

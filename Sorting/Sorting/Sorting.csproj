@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ArrayWasSortedEventHandler">
+      <HintPath>..\dll\ArrayWasSortedEventHandler\ArrayWasSortedEventHandler\bin\Debug\ArrayWasSortedEventHandler.dll</HintPath>
+    </Reference>
     <Reference Include="BaseSorter">
       <HintPath>..\dll\BaseSorter\BaseSorter\bin\Debug\BaseSorter.dll</HintPath>
     </Reference>
