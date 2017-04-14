@@ -18,13 +18,18 @@ namespace Sorting
         private static object locker = new object();
         private List<ISorter> sorterList;
         private int counterForOutputs = 0;
-        //private int[] tmpArray;        
+        //private int[] tmpArray;           
+        private int menuNumberConst = 5;
+        private SQLConnectionUtil sqlConnectionUtil = new SQLConnectionUtil();
 
         public SortMenu(List<ISorter> sorterList)
         {
             this.sorterList = sorterList;
         }
 
+        /// <summary>
+        /// Mathod which is representing the main menu;
+        /// </summary>
         public void ShowMenu()
         {
             //objects and fields init:            
@@ -36,14 +41,15 @@ namespace Sorting
             {
                 //Menu generator:
                 Console.Clear();
-                int sorterListMenuItemCounter = 4;
+                int sorterListMenuItemCounter = menuNumberConst;
 
                 //TODO: create array of string and print
                 Console.WriteLine(
                     "\t\tChoose your actions:\n" +
                     "(1) - Generate new custom 2D array\n" +
-                    "(2) - Print 2D array\n" +
-                    "(3) - Sort simultaneously with all sorters and print to console, once it will be sorted"
+                    "(2) - Import array from DB\n" +
+                    "(3) - Print 2D array\n\n" +
+                    "(4) - Sort simultaneously with all sorters"                    
                     );
 
                 //generating dynamic menu, according to incoming List of sorters
@@ -54,10 +60,10 @@ namespace Sorting
                 }
 
                 //Display last step - exit
-                Console.WriteLine("({0}) - Exit", sorterList.Count + 4);
+                Console.WriteLine("({0}) - Exit", sorterList.Count + menuNumberConst);
 
                 //Reading user selection and parse for correct value:
-                userSelectionMainMenu = SortUtil.ValidateInputNumberForIntValue(Console.ReadLine(), 1, sorterList.Count + 4);
+                userSelectionMainMenu = SortUtil.ValidateInputNumberForIntValue(Console.ReadLine(), 1, sorterList.Count + menuNumberConst);
 
                 //User selection 1-3 handler:
                 switch (userSelectionMainMenu)
@@ -66,13 +72,19 @@ namespace Sorting
                         MenuDialog_GenerateNew2DArray();
                         break;
                     case 2:
+                        current2DArray = sqlConnectionUtil.Get2DArrayFromDB();
+                        Console.Clear();
+                        Console.WriteLine("Array was readed from DB, please press any key...");
+                        Console.ReadKey();                        
+                        break;
+                    case 3:
                         Console.Clear();
                         Console.WriteLine("Please see below printed 2D array:\n\n");
                         SortUtil.Print2DArrayToConsole(current2DArray);
                         Console.WriteLine("To continue, please press any key...");
-                        Console.ReadKey();
+                        Console.ReadKey();                        
                         break;
-                    case 3:
+                    case 4:
                         MenuDialog_SortingMenuHandler(true);
                         break;
                     default:
@@ -80,19 +92,18 @@ namespace Sorting
                 }
 
                 //sub menu (for list of sorters) selection, in case of user selected sorting methods:                
-                if (Enumerable.Range(4, sorterList.Count).Contains(userSelectionMainMenu))
+                if (Enumerable.Range(menuNumberConst, sorterList.Count).Contains(userSelectionMainMenu))
                 {
                     MenuDialog_SortingMenuHandler(false);
                 }
 
                 //exit logic
-                else if (userSelectionMainMenu == sorterList.Count + 4)
+                else if (userSelectionMainMenu == sorterList.Count + menuNumberConst)
                 {
                     isExit = true;
                 }
             }
         }
-
 
         //<<Menu dialog section:>>
         //
@@ -108,52 +119,23 @@ namespace Sorting
             current2DArray = SortUtil.Generate2DArray(customNumberOfRows, customNumberOfColumns);
             Console.WriteLine("New 2D array was generated. \nTo continue, please press any key...");
             Console.ReadKey();
-        }
+        }   
 
-        
-
-
-
-        //split to few small 
+        /// <summary>
+        /// This method contain the logic for sorting singl and multiple sorters.
+        /// </summary>
+        /// <param name="isSortWithAllSortersSimultaneously">true - in case of need to sort with all sorters simultaneously, false - in vice versa</param>
         private void MenuDialog_SortingMenuHandler(bool isSortWithAllSortersSimultaneously)
         {
-            //define prefix for sorting mode description
-            if (isSortWithAllSortersSimultaneously)
-            {
-                sortingModePrefix = "All sorters simultaneously";
-            }
-            else
-            {
-                sortingModePrefix = Convert.ToString(sorterList.ElementAt(userSelectionMainMenu - 4));
-            }
-
-            Console.Clear();
-            Console.WriteLine(
-                "           You've chosen <<{0}>>.\n" +
-                "           Please do you selection:\n" +
-                "(1) - Sorting in Asc\n" +
-                "(2) - Sorting in Desc\n",
-                sortingModePrefix
-                );
-
-            //read sorting sub menu selection and define Asc\Desc sort mode
-            int userSelectionSubMenu = SortUtil.ValidateInputNumberForIntValue(Console.ReadLine(), 1, 2);
-            if (userSelectionSubMenu == 1)
-            {
-                isAscSorting = true;
-            }
-            else
-            {
-                isAscSorting = false;
-            }
+            PrefixSortMenuHandler(isSortWithAllSortersSimultaneously);
+            
+            CheckForAscDescSelection();
 
             current1DArray = SortUtil.Convert2DArrayTo1D(current2DArray);
 
             //run sorting itself. In multithreads, or in single.
             if (isSortWithAllSortersSimultaneously)
-            {
-                                
-
+            {                                
                 foreach (ISorter sorter in sorterList)
                 {
                    
@@ -177,14 +159,60 @@ namespace Sorting
             }
             else
             {
-                current1DArray = sorterList.ElementAt(userSelectionMainMenu - 4).Sort(current1DArray, isAscSorting);
+                current1DArray = sorterList.ElementAt(userSelectionMainMenu - menuNumberConst).Sort(current1DArray, isAscSorting);
                 current2DArray = SortUtil.Convert1DArraTo2D(current1DArray, current2DArray.GetLength(0), current2DArray.GetLength(1));
             }
             Console.WriteLine("Array was sorted with <<{0}>>. \nPlease press anykey get back to Main menu....", sortingModePrefix);
             Console.ReadKey();
         }
-       
-        //subscriber method       
+
+        /// <summary>
+        /// This method will print the submenu for Asc\Des sorting and relevant title of selected Sorting method.
+        /// </summary>
+        /// <param name="isSortWithAllSortersSimultaneously">true - in case of need to sort with all sorters simultaneously, false - in vice versa</param>
+        private void PrefixSortMenuHandler(bool isSortWithAllSortersSimultaneously)
+        {
+            //define prefix for sorting mode description
+            if (isSortWithAllSortersSimultaneously)
+            {
+                sortingModePrefix = "All sorters simultaneously";
+            }
+            else
+            {
+                sortingModePrefix = Convert.ToString(sorterList.ElementAt(userSelectionMainMenu - menuNumberConst));
+            }
+
+            Console.Clear();
+            Console.WriteLine(
+                "           You've chosen <<{0}>>.\n" +
+                "           Please do you selection:\n" +
+                "(1) - Sorting in Asc\n" +
+                "(2) - Sorting in Desc\n",
+                sortingModePrefix
+                );
+        }
+
+        /// <summary>
+        /// This method will check user selection for Asc\Desc  sorting type
+        /// </summary>
+        private void CheckForAscDescSelection()
+        {
+            //read sorting sub menu selection and define Asc\Desc sort mode
+            int userSelectionSubMenu = SortUtil.ValidateInputNumberForIntValue(Console.ReadLine(), 1, 2);
+            if (userSelectionSubMenu == 1)
+            {
+                isAscSorting = true;
+            }
+            else
+            {
+                isAscSorting = false;
+            }
+        }
+
+        /// <summary>
+        /// Subscribe method, once sorting will be completed
+        /// </summary>
+        /// <param name="args">event args</param>      
         public void OnArrayWasSorted(ArrayWasSortedEventArgs args)
         {
             lock (locker)
