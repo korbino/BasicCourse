@@ -55,7 +55,7 @@ namespace Sorting
             }
         }
 
-        //TODO: change logic of below method
+
         private int GetNumberOfRows(String nameOfTable)
         {
             reader = command.ExecuteReader();    

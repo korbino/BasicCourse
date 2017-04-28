@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 
 namespace Sorting
-{    
+{    //TODO: Adding dynamic load of DLLs, using: "c# reflection dynamic dll loading"
     class Program
     {             
         static void Main(string[] args)
@@ -32,7 +32,6 @@ namespace Sorting
 
 //TODO: validator move to separate class and dll
 //TODO: thread.IsBackground = true;
-//TODO: return object as event args
 //TODO: make all sorters with events
 
 
