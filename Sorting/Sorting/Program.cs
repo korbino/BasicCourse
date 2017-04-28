@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 
 namespace Sorting
-{    //TODO: Adding dynamic load of DLLs, using: "c# reflection dynamic dll loading"
+{
     class Program
     {             
         static void Main(string[] args)
         {
-            List<ISorter> sorterList = new List<ISorter> {
-                new BubbleSorter(),
-                new InsertionSorter(),
-                new DefaultSorter(),
-                new SelectionSorter()            
-            };            
+            const string pathToDllsFolder = @"C:\dll";
+       
+            DLLImporterFromFolder dllImporterFromFolder = new DLLImporterFromFolder();
+            List<ISorter> sorterList = dllImporterFromFolder.GetListOfSortersFromPath(pathToDllsFolder);
+
             SortMenu sortMenu = new SortMenu(sorterList);
             
             //linking event from sorters(publisher) with SortMenu (subscriber)
